@@ -10,7 +10,6 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
     <header>
       <nav>
         <ul>
-          <li><a routerLink="/add" routerLinkActive="active">Ajouter une location</a></li>
           <li><a routerLink="/list" routerLinkActive="active">Liste des locations</a></li>
         </ul>
       </nav>

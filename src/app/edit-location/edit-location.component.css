@@ -1,0 +1,143 @@
+/* edit-location.component.css */
+.edit-container {
+    max-width: 600px;
+    margin: 1rem auto;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+  
+  .error-message {
+    background-color: #fee;
+    color: #d33;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-group.full-width {
+    grid-column: span 2;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #34495e;
+    font-size: 0.9rem;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  textarea {
+    min-height: 80px;
+  }
+  
+  .form-check {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+  
+  .form-check input {
+    margin-right: 0.5rem;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  button[type="submit"] {
+    background-color: #3498db; /* Bleu */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #2980b9; /* Bleu plus foncé */
+  }
+  
+  button[type="button"] {
+    background-color: #e74c3c; /* Rouge */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #c0392b; /* Rouge plus foncé */
+  }
+  
+  button:disabled {
+    background-color: #95a5a6 !important;
+    cursor: not-allowed;
+  }
+  
+  @media (max-width: 600px) {
+    .edit-container {
+      padding: 1rem;
+    }
+    
+    .form-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-group.full-width {
+      grid-column: span 1;
+    }
+  }
+  /* Ajoutez ces styles à votre fichier CSS existant */
+.edit-container {
+    box-shadow: 6px 18px 6px 18px rgba(0, 0, 0, 0.12);    transition: box-shadow 0.3s ease;
+    padding: 30px;
+  }
+  
+  /* Effet au survol pour plus d'interactivité */
+  .edit-container:hover {
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);  }
+  
+  /* Pour les écrans mobiles - ombre plus légère */
+  @media (max-width: 600px) {
+    .edit-container {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);    }
+  }

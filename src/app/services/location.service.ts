@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, Observable } from 'rxjs';
+import { catchError, map, Observable, tap } from 'rxjs';
 
 interface Photo {
   id?: number;
@@ -44,6 +44,35 @@ export class LocationService {
     );
   }
 
+  // location.service.ts
+deleteLocation(id: number): Observable<{message: string}> {
+  return this.http.delete<{message: string}>(`${this.apiUrl}/${id}`).pipe(
+    catchError(error => {
+      if (error.status === 404) {
+        throw new Error('Location non trouvée');
+      } else if (error.status === 500) {
+        throw new Error('Erreur serveur lors de la suppression');
+      } else {
+        throw new Error('Erreur inconnue lors de la suppression');
+      }
+    })
+  );
+}
+
+// location.service.ts
+// location.service.ts
+getLocationById(id: number): Observable<any> {
+  return this.http.get(`${this.apiUrl}/${id}`).pipe(
+    tap(data => console.log('Données reçues:', data)), // Debug
+    catchError(error => {
+      console.error('Erreur:', error);
+      throw error;
+    })
+  );
+}
+updateLocation(id: number, data: any): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${id}`, data);
+}
   getLocations(): Observable<Location[]> {
     // Supprimez aussi le '/location' ici
     return this.http.get<{data: Location[]}>(this.apiUrl).pipe(
