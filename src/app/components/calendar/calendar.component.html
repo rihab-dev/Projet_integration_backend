@@ -1,0 +1,28 @@
+<div class="calendar-container">
+    <div class="calendar-header">
+      <button (click)="changeMonth(-1)">←</button>
+      <h2>{{ currentYear }} - {{ currentMonth + 1 | number:'2.0' }}</h2>
+      <button (click)="changeMonth(1)">→</button>
+    </div>
+  
+    <div class="calendar-grid">
+      <div class="day-header" *ngFor="let day of ['D', 'L', 'M', 'M', 'J', 'V', 'S']">
+        {{ day }}
+      </div>
+  
+      <div 
+        *ngFor="let week of weeks"
+        class="week"
+      >
+        <div 
+          *ngFor="let day of week"
+          class="day"
+          [class.current-month]="isCurrentMonth(day)"
+          [class.selected]="selectedDate && day.toDateString() === selectedDate.toDateString()"
+          (click)="selectDate(day)"
+        >
+          {{ day.getDate() }}
+        </div>
+      </div>
+    </div>
+  </div>

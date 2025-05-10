@@ -1,0 +1,50 @@
+<div class="list-container">
+    <h2>Liste des locations</h2>
+    
+    <div class="actions">
+      <a routerLink="/add" class="btn-add">Ajouter une location</a>
+    </div>
+  
+    <div *ngIf="locations.length === 0" class="empty-message">
+      Aucune location disponible pour le moment.
+    </div>
+  
+ 
+    <div class="location-grid">
+        
+      <div *ngFor="let location of locations" class="location-card">
+
+        <div class="card-header">
+          <h3>{{ location.type }} à {{ location.ville }}</h3>
+          <span class="price">{{ location.prix }}DT/mois</span>
+        </div>
+        
+        <div class="card-body">
+          <p><strong>Superficie:</strong> {{ location.superficie }} m²</p>
+          <p><strong>Adresse:</strong> {{ location.adresse }}</p>
+          <p>{{ location.description }}</p>
+          
+          <div class="status">
+            <span class="tag" [class.available]="location.disponibilite" [class.unavailable]="!location.disponibilite">
+              {{ location.disponibilite ? 'Disponible' : 'Non disponible' }}
+            </span>
+            <span class="tag" [class.available]="location.meuble" [class.unavailable]="!location.meuble">{{ location.meuble ? 'Meublé' : 'Non Meublé' }}
+            </span>
+          </div>
+        </div>
+        
+        <div class="card-footer">
+            <button (click)="deleteLocation(location.id)" class="btn-delete" [disabled]="isDeleting">
+              <span *ngIf="!isDeleting">Supprimer</span>
+              <span *ngIf="isDeleting">
+                <i class="fa fa-spinner fa-spin"></i> Suppression...
+              </span>
+            </button>
+<!-- location-list.component.html -->
+<a [routerLink]="['/edit-location', location.id]" class="btn-edit">
+    Modifier
+  </a>
+          </div>
+      </div>
+    </div>
+  </div>

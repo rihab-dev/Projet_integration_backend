@@ -1,0 +1,67 @@
+<div class="form-container">
+    <h2>Ajouter une nouvelle location</h2>
+    <form (ngSubmit)="onSubmit()">
+      <!-- Ligne 1 -->
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select id="type" [(ngModel)]="location.type" name="type" required>
+          <option value="Appartement">Appartement</option>
+          <option value="Maison">Maison</option>
+          <option value="Studio">Studio</option>
+          <option value="Chambre">Chambre</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="prix">Prix (DT)</label>
+        <input type="number" id="prix" [(ngModel)]="location.prix" name="prix" required>
+      </div>
+  
+      <!-- Ligne 2 -->
+      <div class="form-group">
+        <label for="superficie">Superficie (m²)</label>
+        <input type="number" id="superficie" [(ngModel)]="location.superficie" name="superficie" required>
+      </div>
+  
+      <div class="form-group">
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" [(ngModel)]="location.ville" name="ville" required>
+      </div>
+  
+      <!-- Ligne 3 - Pleine largeur -->
+      <div class="form-group full-width">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse" [(ngModel)]="location.adresse" name="adresse" required>
+      </div>
+  
+      <!-- Ligne 4 - Pleine largeur -->
+      <div class="form-group full-width">
+        <label for="description">Description</label>
+        <textarea id="description" [(ngModel)]="location.description" name="description" required></textarea>
+      </div>
+  
+      <!-- Ligne 5 - Checkbox côte à côte -->
+      <div class="form-group checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="location.disponibilite" name="disponibilite">
+          Disponible
+        </label>
+      </div>
+  
+      <div class="form-group checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="location.meuble" name="meuble">
+          Meublé
+        </label>
+      </div>
+  
+      <!-- Ligne 6 - Pleine largeur -->
+      <div class="form-group file-input">
+        <label for="photos">Photos</label>
+        <input type="file" id="photos" (change)="onFileChange($event)" multiple accept="image/*">
+      </div>
+  
+      <!-- Bouton -->
+      <button type="submit">Ajouter la location</button>
+    </form>
+  </div>

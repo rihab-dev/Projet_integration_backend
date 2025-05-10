@@ -1,0 +1,29 @@
+<div class="form-container">
+  <h1 class="form-title">Détails du rendez-vous</h1>
+
+  <div *ngIf="selectedDate" class="selected-date">
+    Date sélectionnée: <strong>{{ selectedDate | date:'fullDate':'fr' }}</strong>
+  </div>
+
+  <form #appForm="ngForm" (ngSubmit)="submitForm(appForm)">
+    <!-- Champ Lieu en texte libre -->
+    <div class="form-group">
+      <label for="lieu" class="form-label">Lieu</label>
+      <input type="text" id="lieu" class="form-control"
+             [(ngModel)]="formData.lieu" name="lieu"
+             placeholder="Entrez l'adresse ou le nom du lieu"
+             required>
+    </div>
+
+    <div class="form-group">
+      <label for="heure" class="form-label">Heure</label>
+      <input type="time" id="heure" class="form-control"
+             [(ngModel)]="formData.heure" name="heure" required>
+    </div>
+
+    <div class="form-group">
+
+    <button type="submit" class="submit-btn">Confirmer le rendez-vous</button>
+    </div>
+  </form>
+</div>

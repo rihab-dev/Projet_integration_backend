@@ -1,0 +1,35 @@
+<h2>Inscription</h2>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label>Nom:</label>
+    <input formControlName="nom" type="text" />
+  </div>
+
+  <div>
+    <label>Prénom:</label>
+    <input formControlName="prenom" type="text" />
+  </div>
+
+  <div>
+    <label>Téléphone:</label>
+    <input formControlName="telephone" type="text" />
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input formControlName="email" type="email" />
+  </div>
+
+  <div formGroupName="plainPassword">
+    <label>Mot de passe:</label>
+    <input formControlName="first" type="password" />
+    <label>Répéter le mot de passe:</label>
+    <input formControlName="second" type="password" />
+  </div>
+
+  <button type="submit" [disabled]="registerForm.invalid">S'inscrire</button>
+</form>
+
+<p *ngIf="message" style="color: green">{{ message }}</p>
+<p *ngIf="error" style="color: red">{{ error }}</p>
