@@ -1,0 +1,136 @@
+<div class="details-container">
+  <h2 class="page-title">Détails de la location</h2>
+  
+  <!-- Chargement -->
+  <div *ngIf="isLoading" class="loading">
+    <div class="spinner"></div>
+    <p>Chargement en cours...</p>
+  </div>
+
+  <!-- Erreur -->
+  <div *ngIf="errorMessage" class="error-message">
+    <span class="icon">⚠️</span>
+    <p>{{ errorMessage }}</p>
+    <a routerLink="/" class="btn btn-back">Retour à la liste</a>
+  </div>
+
+  <!-- Contenu principal -->
+  <div *ngIf="location && !isLoading" class="location-details">
+    <!-- En-tête -->
+    <div class="detail-header">
+      <h3 class="property-title">{{ location.type }} à {{ location.ville }}</h3>
+      <span class="price">{{ location.prix }}DT<small>/mois</small></span>
+    </div>
+    
+    <!-- Corps -->
+    <div class="detail-body">
+      <!-- Galerie photos -->
+      <div class="property-gallery">
+        <div class="main-image">
+          <span class="icon">🏠</span>
+          <span>Image non disponible</span>
+        </div>
+        <div *ngIf="location.photos?.length" class="thumbnail-container">
+          <!-- Ajoutez ici les miniatures si vous avez des photos -->
+        </div>
+      </div>
+      
+      <!-- Informations -->
+      <div class="property-info">
+        <div class="info-section">
+          <div class="info-item">
+            <span class="icon">📏</span>
+            <span><strong>Superficie:</strong> {{ location.superficie }} m²</span>
+          </div>
+          <div class="info-item">
+            <span class="icon">📍</span>
+            <span><strong>Adresse:</strong> {{ location.adresse }}</span>
+          </div>
+          <div class="info-item">
+            <span class="icon">🏙️</span>
+            <span><strong>Ville:</strong> {{ location.ville }}</span>
+          </div>
+        </div>
+        
+        <!-- Description -->
+        <div class="description-section">
+          <h4>Description</h4>
+          <p>{{ location.description || 'Aucune description disponible' }}</p>
+        </div>
+        
+        <!-- Statuts -->
+        <div class="status-tags">
+          <span class="tag" [class.available]="location.disponibilite" [class.unavailable]="!location.disponibilite">
+            <span class="icon">{{ location.disponibilite ? '✅' : '❌' }}</span>
+            {{ location.disponibilite ? 'Disponible' : 'Non disponible' }}
+          </span>
+          <span class="tag" [class.available]="location.meuble" [class.unavailable]="!location.meuble">
+            <span class="icon">{{ location.meuble ? '✅' : '❌' }}</span>
+            {{ location.meuble ? 'Meublé' : 'Non meublé' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Commentaires -->
+    <div class="comments-section">
+      <h3>Commentaires ({{comments.length}})</h3>
+      
+      <!-- Formulaire -->
+      <form [formGroup]="commentForm" (ngSubmit)="onSubmitComment()" class="comment-form">
+        <div class="form-group">
+          <textarea 
+            formControlName="content" 
+            placeholder="Votre commentaire..." 
+            rows="3"
+            [class.invalid]="commentForm.get('content')?.invalid && commentForm.get('content')?.touched">
+          </textarea>
+          <div *ngIf="commentForm.get('content')?.invalid && commentForm.get('content')?.touched" class="error-text">
+            Le commentaire doit contenir au moins 3 caractères
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <input 
+            type="text" 
+            formControlName="author" 
+            placeholder="Votre nom"
+            [class.invalid]="commentForm.get('author')?.invalid && commentForm.get('author')?.touched">
+          <div *ngIf="commentForm.get('author')?.invalid && commentForm.get('author')?.touched" class="error-text">
+            Le nom doit contenir au moins 2 caractères
+          </div>
+        </div>
+        
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+          [disabled]="commentForm.invalid || isCommentLoading">
+          {{ isCommentLoading ? 'Envoi en cours...' : 'Poster le commentaire' }}
+        </button>
+      </form>
+
+      <!-- Liste des commentaires -->
+      <div class="comments-list">
+        <div *ngIf="comments.length === 0" class="no-comments">
+          Aucun commentaire pour le moment. Soyez le premier à commenter !
+        </div>
+
+        <div *ngFor="let comment of comments" class="comment-card">
+          <div class="comment-header">
+            <span class="comment-author">{{comment.auteur}}</span>
+            <span class="comment-date">{{comment.createdAt | date:'mediumDate'}}</span>
+          </div>
+          <div class="comment-content">
+            {{comment.contenu}}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Actions -->
+    <div class="action-buttons">
+      <a routerLink="/" class="btn btn-back">Retour à la liste</a>
+      <button class="btn btn-primary">Prendre rendez-vous 📅</button>
+    </div>
+  </div>
+</div>

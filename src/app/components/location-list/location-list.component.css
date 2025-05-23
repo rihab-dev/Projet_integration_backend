@@ -1,0 +1,283 @@
+/* Style pour le conteneur principal */
+.list-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    margin-top: 0;
+  }
+  
+  /* Titre principal */
+  .list-container h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 0.5rem;
+  }
+  
+  .list-container h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #3498db;
+  }
+  
+  /* Bouton d'action */
+  .actions {
+    text-align: right;
+    margin-bottom: 2rem;
+  }
+  
+  .btn-add {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-add:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Message vide */
+  .empty-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    color: #7f8c8d;
+    font-style: italic;
+    border: 1px dashed #bdc3c7;
+  }
+  
+  /* Grille des locations */
+  .location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  /* Carte de location */
+  .location-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .location-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* En-tête de carte */
+  .card-header {
+    padding: 1rem;
+    background: #3498db;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  .price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+  }
+  
+  /* Corps de carte */
+  .card-body {
+    padding: 1.2rem;
+    flex-grow: 1;
+  }
+  
+  .card-body p {
+    margin: 0.5rem 0;
+    color: #34495e;
+    line-height: 1.5;
+  }
+  
+  .card-body p:first-of-type {
+    margin-top: 0;
+  }
+  
+  .card-body p:last-of-type {
+    margin-bottom: 1rem;
+  }
+  
+  /* Status et tags */
+  .status {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .tag.available {
+    background-color: #d4edda;
+    color: #155724;
+  }
+  
+  .tag.unavailable {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
+  
+  .tag:not(.available):not(.unavailable) {
+    background-color: #e2e3e5;
+    color: #383d41;
+  }
+  
+  /* Pied de carte */
+  .card-footer {
+    padding: 1rem;
+    border-top: 1px solid #eee;
+    text-align: right;
+  }
+  
+  .btn-edit {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+  }
+  
+  .btn-edit:hover {
+    color: #2980b9;
+    text-decoration: underline;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .location-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .list-container {
+      padding: 1rem;
+    }
+    
+    .actions {
+      text-align: center;
+    }
+  }
+
+  .btn-delete {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .btn-delete:hover:not([disabled]) {
+    background-color: #cc0000;
+  }
+  
+  .btn-delete[disabled] {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .btn-edit {
+    background-color: #33b5e5;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  
+  .btn-edit:hover {
+    background-color: #0099cc;
+  }
+  
+  .fa-spinner {
+    margin-right: 5px;
+  }
+  .list-container {
+  
+    margin-top: -20px;
+  }
+  
+
+  /* location-list.component.css */
+
+.photo-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .location-photo {
+    height: 200px;
+    width: auto;
+    max-width: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .no-photos {
+    padding: 20px;
+    text-align: center;
+    background: #f5f5f5;
+    color: #666;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  /* Pour un carrousel plus sophistiqué */
+  .photo-carousel::-webkit-scrollbar {
+    height: 8px;
+  }
+  
+  .photo-carousel::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .photo-carousel::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .photo-carousel::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
